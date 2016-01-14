@@ -11,7 +11,7 @@ namespace ConsoleApplication1
 
 			long result = 1;		// 結果出力用
 			int count2 = 0, count5 = 0;	// 2と5の出現回数カウンタ
-			readonly static int LIMIT = 1000000000;	//後ろのゼロを削る用
+			readonly static int LIMIT = 1000000000;	//9桁に整形する用
 
 			// メインルーチン
 			bool partial = false;
@@ -37,7 +37,7 @@ namespace ConsoleApplication1
 
 				// 掛け算。partialフラグが立っていれば2と5を覗いた数を掛ける。それ以外ならiを直接掛ける。
 				result = partial ? result*div : result*i ;
-				result = result % LIMIT; // 一回計算するたびに、ガッツリ0を削る。
+				result = result % LIMIT; // 一回計算するたびに、9桁に整える。
 
 				partial = false; // 次のループのためにリセット
 			}
@@ -48,7 +48,7 @@ namespace ConsoleApplication1
 			for (int i = 0; i < (count2 - count5); i++)
 			{
 				result *= 2;
-				result = result % LIMIT;  // 一回計算するたびに、ガッツリ0を削る。
+				result = result % LIMIT;  // 一回計算するたびに、9桁に整える。
 			}
 
 			Console.WriteLine(result);
